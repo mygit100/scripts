@@ -1,15 +1,8 @@
 #!/bin/bash
-sudo -i
+sudo echo
 
 read -p "Enter remote username : " remotename
 read -s -p "Enter $remotename password : " remotepw
-
-#echo "username"
-#read remotename
-
-#echo "password"
-#read remotepw
-
 
 echo $remotename
 echo $remotepw
@@ -17,21 +10,19 @@ echo $remotepw
 
 egrep "^$remotename" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
-	echo "$remotename exists!"
-	exit 1
+        echo "$remotename exists!"
+        exit 1
 else
-	pass=$(perl -e 'print crypt($ARGV[0], "password")' $remotepw)
-	useradd -m -p "$pass" "$remotename"
-	[ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
+        pass=$(perl -e 'print crypt($ARGV[0], "password")' $remotepw)
+        sudo useradd -m -p "$pass" "$remotename"
+        [ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
 fi
 
-apt update -y
-apt autoremove -y
-apt install tmux, openssh-server -y 
-apt install xrdp -y
+sudo apt update -y
+sudo apt autoremove -y
+sudo apt install tmux openssh-server -y 
+sudo apt install xrdp -y
 
-usermod -a -G sudo $remotename
-usermod -a -G libvirt $remotename
-usermod -a -G kvm $remotename
-
-systemctl restart xrdp
+sudo usermod -a -G sudo $remotename
+sudo usermod -a -G libvirt $remotename
+sudo usermod -a -G kvm $remotename
