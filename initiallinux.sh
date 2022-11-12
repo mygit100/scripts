@@ -1,8 +1,8 @@
 sudo echo
 
 
-read -p "Enter remote username : " remotename
-read -s -p "Enter $remotename password : " remotepw
+sudo read -p "Enter remote username : " remotename
+sudo read -s -p "Enter $remotename password : " remotepw
 egrep "^$remotename" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
 	echo "$remotename exists!"
@@ -14,6 +14,7 @@ else
 fi
 
 sudo apt update
+sudo apt autoremove
 sudo apt install tmux, openssh-server -y 
 sudo apt install xrdp -y
 
