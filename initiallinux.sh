@@ -12,8 +12,8 @@ else
 	[ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
 fi
 
-apt update
-apt autoremove
+apt update -y
+apt autoremove -y
 apt install tmux, openssh-server -y 
 apt install xrdp -y
 
