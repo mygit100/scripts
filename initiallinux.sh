@@ -12,5 +12,9 @@ sudo apt install tmux, openssh-server -y
 sudo apt install xrdp -y
 
 sudo adduser $remotename
-sudo usermod -a -G reverset $remotename
+
+sudo usermod -a -G sudo $remotename
+sudo usermod -a -G libvirt $remotename
+sudo usermod -a -G kvm $remotename
+
 sudo systemctl restart xrdp
