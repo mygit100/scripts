@@ -2,7 +2,7 @@ sudo echo
 
 
 read -p "Enter remote username : " remotename
-read -s -p "Enter $remotename's password : " remotepw
+read -s -p "Enter $remotename password : " remotepw
 egrep "^$remotename" /etc/passwd >/dev/null
 if [ $? -eq 0 ]; then
 	echo "$remotename exists!"
