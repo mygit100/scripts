@@ -1,7 +1,14 @@
 sudo -i
 
-read -p "Enter remote username : " remotename
-read -s -p "Enter $remotename password : " remotepw
+#read -p "Enter remote username : " remotename
+#read -s -p "Enter $remotename password : " remotepw
+
+echo "username"
+read remotename
+
+echo "password"
+read remotepw
+
 
 echo $remotename
 echo $remotepw
