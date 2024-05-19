@@ -11,16 +11,16 @@ myusername=$(logname)
 mypath=$(eval echo ~$(logname))
 
 # Uninstall previous Docker installations
-apt remove -y docker docker-engine docker.io containerd runc
+sudo apt remove -y docker docker-engine docker.io containerd runc
 
 # Update package list
-apt update
+sudo apt update
 
 # Install dependencies
-apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
+sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
 
 # Add Docker GPG key
-curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+sudo curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 # Add Docker repository  *** only needed for arm (RP) installs 
 #echo "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
@@ -29,16 +29,16 @@ curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/
 #echo "deb [arch=arm64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker-compose.list > /dev/null
 
 # Update package list again to include Docker and Docker Compose repositories
-apt update
+sudo apt update
 
 # Install Docker
-apt install -y docker-ce docker-ce-cli containerd.io
+sudo apt install -y docker-ce docker-ce-cli containerd.io
 
 # Install Docker Compose
-apt install -y docker-compose
+sudo apt install -y docker-compose
 
 # Add current user to Docker group
-usermod -aG docker $myusername
+sudo usermod -aG docker $myusername
 
 # Configure Portainer folder in current user's home directory
 mkdir -p $mypath/docker/portainer_data
