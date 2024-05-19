@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Check if script is run as root
-if [ "$(id -u)" -ne 0 ]; then
-    echo "Please run this script as root."
-    exit 1
-fi
+#if [ "$(id -u)" -ne 0 ]; then
+#    echo "Please run this script as root."
+#   exit 1
+#fi
 
 # save login user and user path to variables
 myusername=$(logname)
