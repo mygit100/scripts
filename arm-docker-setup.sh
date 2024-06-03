@@ -40,7 +40,13 @@ sudo apt install -y docker-compose
 # Add current user to Docker group
 sudo usermod -aG docker $myusername
 
+# Check if /etc/docker folder exists
+if [ ! -d "/etc/docker" ]; then
+    sudo mkdir -p /etc/docker
+fi
+
 # Docker Log Rotation
+# Download daemon.json from the given URL and overwrite if it exists
 sudo wget -O /etc/docker/daemon.json https://raw.githubusercontent.com/mygit100/scripts/main/daemon.json
 
 # Configure Portainer folder in current user's home directory
