@@ -23,10 +23,10 @@ sudo apt install -y apt-transport-https ca-certificates curl gnupg lsb-release
 sudo curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
 # Add Docker repository  *** only needed for arm (RP) installs 
-echo "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo echo "deb [arch=arm64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # Add Docker Compose repository  *** only needed for arm (RP) installs
-echo "deb [arch=arm64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker-compose.list > /dev/null
+sudo echo "deb [arch=arm64] https://download.docker.com/linux/debian $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker-compose.list > /dev/null
 
 # Update package list again to include Docker and Docker Compose repositories
 sudo apt update
@@ -52,17 +52,17 @@ sudo docker run -d -p 8000:8000 -p 9000:9000 --name portainer --restart always -
 # Check if UFW (Uncomplicated Firewall) is installed
 if ! command -v ufw &> /dev/null; then
     echo "UFW is not installed. Installing UFW..."
-    apt install -y ufw
+    sudo apt install -y ufw
 fi
 
 # Enable firewall 
-ufw enable
+sudo ufw enable
 
 # Allow access to Portainer remotely
-ufw allow 9000/tcp
+sudo ufw allow 9000/tcp
 
 # Allow access to SSH
-ufw allow ssh
+sudo ufw allow ssh
 
 # Reload firewall rules
-ufw reload
+sudo ufw reload
