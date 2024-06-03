@@ -40,6 +40,9 @@ sudo apt install -y docker-compose
 # Add current user to Docker group
 sudo usermod -aG docker $myusername
 
+# Docker Log Rotation
+sudo wget -O /etc/docker/daemon.json https://raw.githubusercontent.com/mygit100/scripts/main/daemon.json
+
 # Configure Portainer folder in current user's home directory
 mkdir -p $mypath/docker/portainer_data
 
