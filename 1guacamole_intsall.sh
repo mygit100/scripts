@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# This bash script installs Apache Guacamole on Raspberry Pi 4 64bit using Tomcat as the web server and MariaDB as the backend database
+
 # Exit immediately if a command exits with a non-zero status
 set -e
 
