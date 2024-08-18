@@ -48,7 +48,7 @@ set matchpairs+=<:>
 
 " Display different types of white spaces. 
 set list 
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:. 
+set listchars=tab:>\ ,trail:-,extends:>,nbsp:+
 
 color industry 
 
