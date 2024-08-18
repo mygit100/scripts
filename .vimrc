@@ -52,8 +52,19 @@ set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
 color industry 
 
-" Show line numbers 
-set relativenumber 
+" Show line numbers
+" Both absolute and relative line numbers are enabled, which produces “hybrid” line numbers.
+" When entering insert mode, relative line numbers are turned off, leaving absolute line numbers turned on.
+" source: https://jeffkreeftmeijer.com/vim-number/
+
+set number
+
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
+
 
 " Set status line display 
 set statusline=%F%m%r%h%w\ [FORMAT=%{&ff}]\ [TYPE=%Y]\ [POS=%l,%v][%p%%]\ [BUFFER=%n]\ %{strftime('%c')} 
