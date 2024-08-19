@@ -2,7 +2,9 @@
 set nocompatible 
 
 " Helps force plug-ins to load correctly when it is turned back on below. 
-filetype off 
+"filetype off 
+filetype plugin indent on
+
 
 " Turn on syntax highlighting. 
 syntax on 
@@ -21,9 +23,9 @@ set pastetoggle=<F2>
 " Uncomment below to set the max textwidth. Use a value corresponding to the width of your screen. 
 " set textwidth=79 
 set formatoptions=tcqrn1 
-set tabstop=2 
-set shiftwidth=2 
-set softtabstop=2 
+set tabstop=4 
+set shiftwidth=4 
+set softtabstop=4 
 set expandtab 
 set noshiftround 
 
@@ -43,6 +45,13 @@ set laststatus=2
 set showmode 
 set showcmd 
 
+"Highlight Current Line
+set cursorline
+
+"Show Matching Parentheses
+set showmatch
+
+
 " Highlight matching pairs of brackets. Use the '%' character to jump between them. 
 set matchpairs+=<:> 
 
@@ -50,7 +59,9 @@ set matchpairs+=<:>
 set list 
 set listchars=tab:>\ ,trail:-,extends:>,nbsp:+
 
-color industry 
+"Theme
+" slate industry elford koehler
+color koehler
 
 " Show line numbers
 " Both absolute and relative line numbers are enabled, which produces “hybrid” line numbers.
@@ -93,4 +104,4 @@ vnoremap <Space> zf
 
 " Automatically save and load folds 
 autocmd BufWinLeave *.* mkview 
-autocmd BufWinEnter *.* silent loadview" 
+autocmd BufWinEnter *.* silent loadview"
