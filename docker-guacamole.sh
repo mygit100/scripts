@@ -138,13 +138,3 @@ docker-compose up -d
 echo "Guacamole has been set up and is running on http://$(hostname -I | awk '{print $1}'):8080/guacamole/"
 echo "Please check the .env file in ${BASE_DIR} for the database credentials."
 echo "Default Guacamole credentials are guacadmin/guacadmin. Please change them after first login."
-
-#—--------------------------------------------------------
-#docker
-#guacamole
-#AMD64
-#x86
-#thisworks
-#bash
-#works
-#script
