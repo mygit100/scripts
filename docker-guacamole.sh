@@ -5,6 +5,7 @@
 #set -e
 
 # Function to install missing packages
+echo "Installing missing packages"
 install_missing_package() {
     local package=$1
     if ! command -v "$package" &> /dev/null; then
@@ -106,6 +107,7 @@ echo "Waiting for PostgreSQL to be ready..."
 sleep 15
 
 # Check if the database has already been initialized
+echo "Check if the database has already been initialized"
 if ! docker exec guacamole-postgres psql -U postgres -d guacamole_db -c '\q' 2>/dev/null; then
     echo "Setting up the database..."
 
@@ -117,6 +119,8 @@ GRANT ALL ON DATABASE guacamole_db TO $POSTGRES_USER;
 EOF
 
     # Initialize the database schema
+    echo "Initialize the database schema"
+    
     docker run --rm guacamole/guacamole /opt/guacamole/bin/initdb.sh --postgresql > initdb.sql
     docker cp initdb.sql guacamole-postgres:/
     docker exec -i guacamole-postgres psql -U $POSTGRES_USER -d guacamole_db -f /initdb.sql
@@ -127,6 +131,7 @@ echo "Pause for 15 seconds..."
 sleep 15
 
 # Restart the services to apply changes
+echo "Restart the services to apply changes"
 docker-compose down
 docker-compose up -d
 
