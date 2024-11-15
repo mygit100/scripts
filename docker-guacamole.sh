@@ -128,7 +128,7 @@ fi
 
 # Wait for everything to setup
 echo "Pause for 15 seconds..."
-sleep 15
+sleep 5
 
 # Restart the services to apply changes
 echo "Restart the services to apply changes"
