@@ -122,6 +122,10 @@ EOF
     docker exec -i guacamole-postgres psql -U $POSTGRES_USER -d guacamole_db -f /initdb.sql
 fi
 
+# Wait for everything to setup
+echo "Pause for 15 seconds..."
+sleep 15
+
 # Restart the services to apply changes
 docker-compose down
 docker-compose up -d
