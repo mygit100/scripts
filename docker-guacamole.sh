@@ -2,7 +2,7 @@
 # docker-guacamole.sh
 
 # Exit immediately if a command exits with a non-zero status.
-set -e
+#set -e
 
 # Function to install missing packages
 install_missing_package() {
