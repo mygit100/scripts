@@ -127,7 +127,7 @@ EOF
 fi
 
 # Wait for everything to setup
-echo "Pause for 15 seconds..."
+echo "Pause for 5 seconds..."
 sleep 5
 
 # Restart the services to apply changes
